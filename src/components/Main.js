@@ -16,17 +16,17 @@ export default class Main extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        let url;
+        let url1;
         if (e.target.formGridState.value === "US" && e.target.formGridCity.value !== "") {
-            url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_KEY}&q=${e.target.formGridCity.value}&format=json`
+            url1 = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_KEY}&q=${e.target.formGridCity.value}&format=json`
         } else if (e.target.formGridState.value === "EU" && e.target.formGridCity.value !== "") {
-            url = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_KEY}&q=${e.target.formGridCity.value}&format=json`
+            url1 = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_KEY}&q=${e.target.formGridCity.value}&format=json`
         } else if (e.target.formGridState.value === "") {
             return Swal.fire('You Must Select a Region')
         } else if (e.target.formGridCity.value === "") {
             return Swal.fire('You Must Enter Something To Search')
         }
-        await axios.get(url)
+        await axios.get(url1)
             .then((fullData) => {
                 console.log(fullData.data);
                 this.setState({ response: fullData.data })
