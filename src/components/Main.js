@@ -46,7 +46,6 @@ export default class Main extends Component {
                                 <Results datax={this.state.response} key={item.place_id} latitude={item.lat} longitude={item.lon} displayName={item.display_name} class={item.class} classIcon={item.icon} type={item.type} />
                             )
                         })) : (<div><p>Welcome! Explore The World!</p></div>)}
-                        {this.state.error ? (<div><p>xxxxxxxxxxxxxxxxxx</p></div>) : ("")}
                     </div>
                 </div>
             </>
