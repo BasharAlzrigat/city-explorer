@@ -11,7 +11,6 @@ export default class Main extends Component {
         super(props);
         this.state = {
             response: '',
-            error: ''
         }
     }
 
@@ -28,10 +27,11 @@ export default class Main extends Component {
             return Swal.fire('You Must Enter Something To Search')
         }
         await axios.get(url)
-            .then(fullData => {
+            .then((fullData) => {
+                console.log(fullData.data);
                 this.setState({ response: fullData.data })
-            });
 
+            });
     }
 
     render() {
@@ -39,13 +39,14 @@ export default class Main extends Component {
             <>
                 <div id="mainContainer">
                     <Explore handleSubmit={this.handleSubmit} />
-                    <div id = "cardsContainer" className= {this.state.response ? "cardsContainerfull" : ""}>
+                    <div id="cardsContainer" className={this.state.response ? "cardsContainerfull" : ""}>
                         {this.state.response ? (this.state.response.map((item) => {
                             return (
 
                                 <Results datax={this.state.response} key={item.place_id} latitude={item.lat} longitude={item.lon} displayName={item.display_name} class={item.class} classIcon={item.icon} type={item.type} />
                             )
                         })) : (<div><p>Welcome! Explore The World!</p></div>)}
+                        {this.state.error ? (<div><p>xxxxxxxxxxxxxxxxxx</p></div>) : ("")}
                     </div>
                 </div>
             </>
