@@ -4,28 +4,33 @@
 **Version**: 1.0.0
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+
+this application was made in order to response to one of the ASAC Task - course 301 JS.
+so we are building a search engin that user can search for a location by providing any related information
+about it, so the application will give the use all the expected location that related for his search.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+
+this app still undownloadable, the user can user can visit the website to use it online, in coming updates the user will have tha bility to download it and use it on his own machine.
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+
+this application was built using the React library, bootstrap and css
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+01-08-2022 4:59am - Application now deployed to netlify and ready to use.
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
-Name of feature: ________________________________
+thanks for [Huthaifa Alzawahreh](https://github.com/HodRZ) for participating in this project, we drew the web request-response cycle for the current lab together.
 
-Estimate of time needed to complete: _____
+Name of feature: search engin
 
-Start time: _____
+Estimate of time needed to complete: 3 hours
 
-Finish time: _____
+Start time: 6 pm
 
-Actual time needed to complete: _____
+Finish time: 8 pm
+
+Actual time needed to complete: 2 hours

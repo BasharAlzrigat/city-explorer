@@ -1,0 +1,18 @@
+#exploreContainer {
+    display: flex;
+    border-style: groove;
+    border-width: 2px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: auto;
+    background-color: #f9f9f9;
+}
+form {
+    margin: 20px;
+}
+#buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 25px;
+}

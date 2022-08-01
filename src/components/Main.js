@@ -1,53 +1,54 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
+import Explore from './Explore'
+import Results from './Results'
+import Swal from 'sweetalert2'
 import '../theme/Main.css'
 
 export default class Main extends Component {
 
-
-handleSubmit=(e)=>{
-    e.preventDefault()
-    let url;
-    if (e.target.formGridState.value === "US"){
-        url=`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_KEY}&q=${e.target.formGridCity.value}&format=json`
-    }else if(e.target.formGridState.value === "EU"){
-        url=`https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_KEY}&q=${e.target.formGridCity.value}&format=json`
-    }else{
-        return alert("You didn't choose a region please go and select a region");
+    constructor(props) {
+        super(props);
+        this.state = {
+            response: '',
+            error: ''
+        }
     }
-    axios.get(url)
 
-}
+    handleSubmit = async (e) => {
+        e.preventDefault()
+        let url;
+        if (e.target.formGridState.value === "US" && e.target.formGridCity.value !== "") {
+            url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_KEY}&q=${e.target.formGridCity.value}&format=json`
+        } else if (e.target.formGridState.value === "EU" && e.target.formGridCity.value !== "") {
+            url = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_KEY}&q=${e.target.formGridCity.value}&format=json`
+        } else if (e.target.formGridState.value === "") {
+            return Swal.fire('You Must Select a Region')
+        } else if (e.target.formGridCity.value === "") {
+            return Swal.fire('You Must Enter Something To Search')
+        }
+        await axios.get(url)
+            .then(fullData => {
+                this.setState({ response: fullData.data })
+            });
 
+    }
 
     render() {
         return (
-            <div>
-    <Form onSubmit = {(e)=>{this.handleSubmit(e)}}>
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>City</Form.Label>
-          <Form.Control />
-        </Form.Group>
+            <>
+                <div id="mainContainer">
+                    <Explore handleSubmit={this.handleSubmit} />
+                    <div id = "cardsContainer" className= {this.state.response ? "cardsContainerfull" : ""}>
+                        {this.state.response ? (this.state.response.map((item) => {
+                            return (
 
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>Region</Form.Label>
-          <Form.Select defaultValue="Choose...">
-          <option value = "">Select Region</option>
-            <option value = "US">United States</option>
-            <option value = "EU">Europe</option>
-          </Form.Select>
-        </Form.Group>
-      </Row>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
-            </div>
+                                <Results datax={this.state.response} key={item.place_id} latitude={item.lat} longitude={item.lon} displayName={item.display_name} class={item.class} classIcon={item.icon} type={item.type} />
+                            )
+                        })) : (<div><p>Welcome! Explore The World!</p></div>)}
+                    </div>
+                </div>
+            </>
         )
     }
 }
