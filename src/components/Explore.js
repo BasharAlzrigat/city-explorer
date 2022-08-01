@@ -26,12 +26,12 @@ render() {
                         </Form.Group>
                     </Row>
                     <span id="buttons">
+                    <Button variant="success" type="submit">
+                        Explore!
+                    </Button>
                     <Button variant="primary" onClick={()=>window.location.reload()}>
                         Clear Result!
                     </Button>
-                    <Button variant="success" type="submit">
-                        Explore!
-                    </Button>{" "}
                     </span>
                 </Form>
             </div>

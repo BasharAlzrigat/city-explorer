@@ -16,3 +16,6 @@ form {
     gap: 40px;
     margin-top: 25px;
 }
+.btn-success {
+    width: 50%;
+}
