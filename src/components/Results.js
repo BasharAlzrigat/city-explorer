@@ -7,8 +7,7 @@ import '../theme/Results.css'
 export default class Results extends Component {
   render() {
     return (
-
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '40%' }}>
         <Card.Header>{this.props.displayName}</Card.Header>
         <Card.Img variant="top" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${this.props.latitude},${this.props.longitude}&zoom=1-18`} />
         <ListGroup variant="flush">
