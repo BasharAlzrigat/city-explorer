@@ -44,8 +44,3 @@ export default class Weather extends Component {
 }
 
 
-{/* 
-{this.props.weatherArray ? this.props.weatherArray.map(value => {
-    return (<div><p>{value.description}</p><p>{value.date}</p></div>)
-}): <p>No weather data</p>}
- */}
