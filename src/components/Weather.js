@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import WeatherDay from './WeatherDay'
 import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';
 import '../theme/Weather.css'
@@ -14,23 +15,16 @@ export default class Weather extends Component {
                             <thead>
                                 <tr>
                                     <th>Date</th>
-                                    {/* <th>Low Of</th>
-                                    <th>High Of</th> */}
                                     <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.props.weathercards ? this.props.weathercards.map((value, index) => {
                                     return (
-                                        <tr key={index}>
-                                            <td>{value.date}</td>
-                                            {/* <td>Mark</td>
-                                        <td>Otto</td> */}
-                                            <td>{value.description}</td>
-                                        </tr>
+                                            <WeatherDay key={index} value={value} index={index} />
                                     )
 
-                                }) : <p>No weather data</p>}
+                                }) : <tr><td><p>{this.props.errorMessage2}</p></td></tr>}
 
 
                             </tbody>
