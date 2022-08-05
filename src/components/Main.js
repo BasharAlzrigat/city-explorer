@@ -30,7 +30,7 @@ export default class Main extends Component {
     }
     getWeatherData = async (lat, lon) => {
         try {
-            let WeatherData = await axios.get(`http://localhost:3001/weatherbit?&lat=${lat}&lon=${lon}`)
+            let WeatherData = await axios.get(`https://still-cliffs-11579.herokuapp.com/weatherbit?&lat=${lat}&lon=${lon}`)
             console.log(WeatherData.data);
             this.setState({
                 weatherObj: WeatherData.data,
@@ -51,7 +51,7 @@ export default class Main extends Component {
     }
     getMoviesData = async (searchQuery) => {
         try {
-            let MoviesData = await axios.get(`http://localhost:3001/movies?searchQuery=${searchQuery}`)
+            let MoviesData = await axios.get(`https://still-cliffs-11579.herokuapp.com/movies?searchQuery=${searchQuery}`)
             console.log(MoviesData.data);
             this.setState({
                 MoviesObj: MoviesData.data,
